@@ -1,0 +1,102 @@
+.app-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition:
+    background 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out),
+    box-shadow 0.2s var(--ease-out);
+}
+
+.app-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.accent-cyan .card-icon {
+  color: var(--accent-blue);
+  background: rgba(107, 159, 255, 0.12);
+}
+
+.accent-magenta .card-icon {
+  color: var(--accent-rose);
+  background: rgba(224, 122, 138, 0.12);
+}
+
+.accent-purple .card-icon {
+  color: var(--accent-violet);
+  background: rgba(155, 143, 212, 0.12);
+}
+
+.accent-green .card-icon {
+  color: var(--accent-green);
+  background: rgba(107, 184, 122, 0.12);
+}
+
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.card-category {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--text-muted);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0.2rem 0 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  flex: 1;
+  margin-bottom: 1rem;
+  line-height: 1.45;
+}
+
+.card-tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.card-tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+.card-arrow {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+  transition: color 0.2s, transform 0.2s var(--ease-out);
+}
+
+.app-card:hover .card-arrow {
+  color: var(--text-secondary);
+  transform: translateX(3px);
+}

@@ -1,0 +1,807 @@
+/* ── Break out of app-shell for full editor width ── */
+.vector-draw--editor {
+  width: 100%;
+  max-width: none;
+  min-height: calc(100vh - 57px);
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border-top: 1px solid #0d0d0d;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.vector-draw--welcome {
+  width: 100%;
+  max-width: none;
+  min-height: calc(100vh - 57px);
+  background: #1e1e1e;
+}
+
+/* ── New document dialog (Photoshop-style) ── */
+.vd-welcome-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+  padding: 2rem;
+}
+
+.vd-new-doc-dialog {
+  width: min(640px, 100%);
+  background: #2b2b2b;
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.vd-new-doc-dialog h2 {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  background: #323232;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.vd-dialog-body {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.vd-dialog-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #1e1e1e;
+  border: 1px solid #1a1a1a;
+}
+
+.vd-preview-box {
+  width: 100%;
+  max-height: 140px;
+  background: #fff;
+  border: 1px solid #555;
+}
+
+.vd-dialog-preview span {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+.vd-dialog-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.7rem;
+  color: #999;
+}
+
+.vd-dialog-form input {
+  padding: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+  color: #e8e8e8;
+  background: #1e1e1e;
+  border: 1px solid #444;
+}
+
+.vd-preset-list {
+  margin-top: 0.5rem;
+}
+
+.vd-preset-label {
+  display: block;
+  font-size: 0.65rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.vd-preset-row {
+  display: block;
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.75rem;
+  color: #bbb;
+  text-align: left;
+  background: transparent;
+  border: none;
+}
+
+.vd-preset-row:hover {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+.vd-dialog-actions {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #1a1a1a;
+  text-align: right;
+}
+
+.vd-dialog-btn {
+  padding: 0.4rem 1.25rem;
+  font-size: 0.8rem;
+  border: 1px solid #555;
+  background: #3a3a3a;
+  color: #e8e8e8;
+}
+
+.vd-dialog-btn.primary {
+  background: #1473e6;
+  border-color: #1473e6;
+  color: #fff;
+}
+
+.vd-recent-section {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid #1a1a1a;
+}
+
+.vd-recent-section h3 {
+  font-size: 0.7rem;
+  color: #888;
+  text-transform: uppercase;
+  margin: 0.75rem 0 0.35rem;
+}
+
+.vd-recent-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.75rem;
+  color: #bbb;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+.vd-recent-row:hover {
+  background: #3a3a3a;
+}
+
+/* ── Menu bar ── */
+.vd-menubar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 28px;
+  padding: 0 0.5rem;
+  background: #323232;
+  border-bottom: 1px solid #1a1a1a;
+  flex-shrink: 0;
+}
+
+.vd-menu-wrap {
+  position: relative;
+}
+
+.vd-menu-trigger {
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  color: #ccc;
+  background: transparent;
+  border: none;
+  height: 28px;
+}
+
+.vd-menu-trigger:hover,
+.vd-menu-trigger.open {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+.vd-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: #2b2b2b;
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.vd-menu-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  color: #ccc;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+.vd-menu-item:hover:not(:disabled) {
+  background: #1473e6;
+  color: #fff;
+}
+
+.vd-menu-item:disabled {
+  opacity: 0.35;
+}
+
+.vd-menu-shortcut {
+  font-size: 0.65rem;
+  color: #888;
+  margin-left: 1.5rem;
+}
+
+.vd-menu-item:hover .vd-menu-shortcut {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.vd-doc-title {
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: #888;
+  padding-right: 0.5rem;
+}
+
+/* ── Options bar ── */
+.vd-optionsbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 36px;
+  padding: 0 0.75rem;
+  background: #282828;
+  border-bottom: 1px solid #1a1a1a;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.vd-options-tool {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #aaa;
+  white-space: nowrap;
+}
+
+.vd-options-tool i {
+  color: #ccc;
+}
+
+.vd-options-divider {
+  width: 1px;
+  height: 20px;
+  background: #444;
+  flex-shrink: 0;
+}
+
+.vd-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  color: #999;
+  white-space: nowrap;
+}
+
+.vd-opt input[type="color"] {
+  width: 24px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid #555;
+  background: transparent;
+  cursor: pointer;
+}
+
+.vd-opt input[type="number"] {
+  width: 48px;
+  padding: 0.15rem 0.3rem;
+  font-size: 0.75rem;
+  color: #e8e8e8;
+  background: #1e1e1e;
+  border: 1px solid #444;
+}
+
+.vd-opt select {
+  padding: 0.15rem 0.35rem;
+  font-size: 0.7rem;
+  color: #e8e8e8;
+  background: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/* ── Workspace ── */
+.vd-workspace {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── Left tool strip ── */
+.vd-tools {
+  display: flex;
+  flex-direction: column;
+  width: 44px;
+  flex-shrink: 0;
+  background: #323232;
+  border-right: 1px solid #1a1a1a;
+  padding: 2px 0;
+  overflow-y: auto;
+}
+
+.vd-tool {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 36px;
+  color: #aaa;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  transition: background 0.1s, color 0.1s;
+}
+
+.vd-tool:hover {
+  color: #fff;
+  background: #3a3a3a;
+}
+
+.vd-tool.active {
+  color: #fff;
+  background: #1e1e1e;
+  box-shadow: inset 2px 0 0 #1473e6;
+}
+
+/* ── Document area ── */
+.vd-doc-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #262626;
+  background-image:
+    linear-gradient(45deg, #2a2a2a 25%, transparent 25%),
+    linear-gradient(-45deg, #2a2a2a 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #2a2a2a 75%),
+    linear-gradient(-45deg, transparent 75%, #2a2a2a 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+.vd-canvas-stage {
+  transform-origin: 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.vd-svg {
+  display: block;
+  cursor: crosshair;
+  touch-action: none;
+  box-shadow: 0 0 0 1px #111, 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.vd-selection {
+  pointer-events: none;
+}
+
+/* ── Right panels ── */
+.vd-panels {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  flex-shrink: 0;
+  background: #323232;
+  border-left: 1px solid #1a1a1a;
+  overflow: hidden;
+}
+
+.vd-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.vd-panel:last-child {
+  border-bottom: none;
+}
+
+.vd-panel--properties {
+  flex: 1.2;
+  min-height: 160px;
+}
+
+.vd-panel--layers {
+  flex: 1;
+  min-height: 120px;
+}
+
+.vd-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 26px;
+  padding: 0 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #bbb;
+  background: #2b2b2b;
+  border-bottom: 1px solid #1a1a1a;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.vd-panel-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.vd-panel-actions button {
+  width: 22px;
+  height: 20px;
+  font-size: 0.6rem;
+  color: #999;
+  background: transparent;
+  border: none;
+}
+
+.vd-panel-actions button:hover {
+  color: #fff;
+  background: #3a3a3a;
+}
+
+.vd-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.4rem;
+}
+
+/* ── Layers list ── */
+.vd-layer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.vd-layer {
+  display: grid;
+  grid-template-columns: 22px 18px 1fr 22px;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.25rem;
+  font-size: 0.75rem;
+  color: #bbb;
+  background: #2b2b2b;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.vd-layer:hover {
+  background: #353535;
+}
+
+.vd-layer.selected {
+  background: #1a3a5c;
+  border-color: #1473e6;
+  color: #fff;
+}
+
+.vd-layer-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  font-size: 0.6rem;
+  color: #888;
+  background: transparent;
+  border: none;
+}
+
+.vd-layer-btn:hover {
+  color: #fff;
+}
+
+.vd-layer-thumb {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #555;
+  border-radius: 2px;
+}
+
+.vd-layer-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Properties ── */
+.vd-prop-group {
+  margin-bottom: 0.65rem;
+}
+
+.vd-prop-title {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.vd-prop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+}
+
+.vd-prop-grid label,
+.vd-prop-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.65rem;
+  color: #888;
+  margin-bottom: 0.3rem;
+}
+
+.vd-prop-grid input,
+.vd-prop-row input {
+  padding: 0.2rem 0.35rem;
+  font-size: 0.75rem;
+  color: #e8e8e8;
+  background: #1e1e1e;
+  border: 1px solid #444;
+}
+
+.vd-prop-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vd-prop-row input[type="range"] {
+  flex: 1;
+  margin-left: 0.5rem;
+}
+
+.vd-muted {
+  font-size: 0.7rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Status bar ── */
+.vd-statusbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 24px;
+  padding: 0 0.75rem;
+  font-size: 0.7rem;
+  color: #888;
+  background: #323232;
+  border-top: 1px solid #1a1a1a;
+  flex-shrink: 0;
+}
+
+.vd-statusbar button {
+  padding: 0 0.35rem;
+  font-size: 0.75rem;
+  color: #aaa;
+  background: transparent;
+  border: none;
+  height: 20px;
+}
+
+.vd-statusbar button:hover {
+  color: #fff;
+  background: #3a3a3a;
+}
+
+.vd-statusbar-spacer {
+  flex: 1;
+}
+
+.vd-statusbar-divider {
+  color: #555;
+}
+
+.vd-zoom-label {
+  min-width: 36px;
+  text-align: center;
+  color: #bbb;
+}
+
+.vd-doc-area.vd-panning,
+.vd-doc-area.vd-panning .vd-svg {
+  cursor: grab;
+}
+
+.vd-doc-area.vd-panning:active .vd-svg {
+  cursor: grabbing;
+}
+
+.vd-zoom-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+}
+
+.vd-zoom-bar button {
+  width: 24px;
+  height: 22px;
+  font-size: 0.7rem;
+  color: #aaa;
+  background: #1e1e1e;
+  border: 1px solid #444;
+}
+
+.vd-zoom-bar button:hover {
+  color: #fff;
+  border-color: #1473e6;
+}
+
+.vd-zoom-bar span {
+  font-size: 0.7rem;
+  color: #bbb;
+  min-width: 36px;
+  text-align: center;
+}
+
+.vd-rename-input {
+  width: 100%;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.2rem;
+  background: #1e1e1e;
+  border: 1px solid #1473e6;
+  color: #e8e8e8;
+}
+
+.vd-layer.grouped {
+  padding-left: 0.5rem;
+}
+
+.vd-group-icon {
+  font-size: 0.55rem;
+  margin-right: 0.2rem;
+  color: #888;
+}
+
+.vd-align-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.vd-align-btn,
+.vd-action-btn {
+  padding: 0.25rem;
+  font-size: 0.6rem;
+  color: #bbb;
+  background: #2b2b2b;
+  border: 1px solid #444;
+}
+
+.vd-align-btn:hover,
+.vd-action-btn:hover {
+  color: #fff;
+  border-color: #1473e6;
+}
+
+.vd-action-row {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.vd-action-btn {
+  flex: 1;
+}
+
+.vd-action-btn.active {
+  color: #fff;
+  border-color: #1473e6;
+  background: #1a3a5c;
+}
+
+.vd-prop-color {
+  display: grid;
+  grid-template-columns: 52px 32px 1fr;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.65rem;
+  color: #888;
+  margin-bottom: 0.35rem;
+}
+
+.vd-prop-color input[type="color"] {
+  width: 32px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #555;
+  background: transparent;
+  cursor: pointer;
+}
+
+.vd-prop-color input[type="color"]:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.vd-color-hex {
+  font-size: 0.65rem;
+  color: #aaa;
+  font-family: ui-monospace, monospace;
+}
+
+.vd-hint-inline {
+  font-size: 0.65rem;
+  color: #666;
+}
+
+.vd-path-edit {
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .vd-panels {
+    width: 200px;
+  }
+
+  .vd-dialog-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .vd-workspace {
+    flex-direction: column;
+  }
+
+  .vd-tools {
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .vd-tool {
+    width: 40px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .vd-panels {
+    width: 100%;
+    max-height: 240px;
+    flex-direction: row;
+    border-left: none;
+    border-top: 1px solid #1a1a1a;
+  }
+
+  .vd-panel {
+    flex: 1;
+    border-bottom: none;
+    border-right: 1px solid #1a1a1a;
+  }
+
+  .vd-panel:last-child {
+    border-right: none;
+  }
+}

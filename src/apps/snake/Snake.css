@@ -1,0 +1,122 @@
+.snake {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.snake-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.snake-settings-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: color 0.15s, background 0.15s;
+}
+
+.snake-settings-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+}
+
+.snake-header {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.snake-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.snake-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.snake-stat-value {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.snake-board {
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.snake-start {
+  padding: 0.55rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--accent-green);
+  border-radius: var(--radius-sm);
+  transition: filter 0.15s;
+}
+
+.snake-start:hover {
+  filter: brightness(1.06);
+}
+
+.snake-paused {
+  font-size: 0.85rem;
+  color: var(--accent-green);
+}
+
+.snake-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.snake-controls-row {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.snake-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+}
+
+.snake-btn:hover {
+  background: var(--bg-card-hover);
+}
+
+.snake-btn:active {
+  transform: scale(0.96);
+}
+
+.snake-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}

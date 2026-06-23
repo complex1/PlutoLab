@@ -1,0 +1,22 @@
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.back-btn:hover {
+  color: var(--text-primary);
+}
+
+.back-arrow {
+  font-size: 0.95rem;
+  transition: transform 0.2s var(--ease-out);
+}
+
+.back-btn:hover .back-arrow {
+  transform: translateX(-2px);
+}

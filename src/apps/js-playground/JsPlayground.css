@@ -1,0 +1,341 @@
+.js-playground {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: calc(100vh - 120px);
+}
+
+.jsp-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.jsp-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.jsp-tagline {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.jsp-header-actions,
+.jsp-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.jsp-toolbar {
+  padding: 0.55rem 0.7rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.jsp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.jsp-btn--sm {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+}
+
+.jsp-btn:hover:not(:disabled) {
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+}
+
+.jsp-btn--primary {
+  color: #fff;
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
+.jsp-btn--primary:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+
+.jsp-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.jsp-toggle,
+.jsp-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.jsp-control input[type="range"] {
+  width: 72px;
+}
+
+.jsp-status {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--accent-blue);
+}
+
+.jsp-body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0.75rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.jsp-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 520px;
+  padding: 0.65rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.jsp-side-section {
+  overflow: auto;
+}
+
+.jsp-side-section h2 {
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.jsp-snippet-list,
+.jsp-snippet-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jsp-snippet-group + .jsp-snippet-group {
+  margin-top: 0.55rem;
+}
+
+.jsp-snippet-category {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.jsp-snippet-item {
+  display: block;
+  width: 100%;
+  padding: 0.35rem 0.45rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  text-align: left;
+}
+
+.jsp-snippet-item:hover {
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+}
+
+.jsp-saved-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.jsp-saved-actions {
+  display: flex;
+  gap: 0.1rem;
+}
+
+.jsp-icon-btn {
+  width: 24px;
+  height: 24px;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+}
+
+.jsp-icon-btn:hover,
+.jsp-icon-btn.active {
+  color: #f5c842;
+}
+
+.jsp-empty {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.jsp-workspace {
+  display: grid;
+  min-height: 520px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+.jsp-workspace--vertical {
+  grid-template-rows: 1fr 220px;
+}
+
+.jsp-workspace--split {
+  grid-template-columns: 1fr 1fr;
+}
+
+.jsp-editor-pane,
+.jsp-console-pane {
+  min-height: 0;
+  min-width: 0;
+}
+
+.jsp-editor-pane {
+  border-bottom: 1px solid var(--border);
+}
+
+.jsp-workspace--split .jsp-editor-pane {
+  border-bottom: none;
+  border-right: 1px solid var(--border);
+}
+
+.jsp-console-pane {
+  display: flex;
+  flex-direction: column;
+  background: #111318;
+}
+
+.jsp-console-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.7rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.jsp-console-header h2 {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9aa3b2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.jsp-shortcut-hint {
+  font-size: 0.68rem;
+  color: #6b7280;
+}
+
+.jsp-console-output {
+  flex: 1;
+  overflow: auto;
+  padding: 0.55rem 0.7rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+}
+
+.jsp-console-empty {
+  margin: 0;
+  color: #6b7280;
+}
+
+.jsp-console-line {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 0.45rem;
+  margin-bottom: 0.35rem;
+  color: #d1d5db;
+}
+
+.jsp-console-line pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.jsp-console-line--warn {
+  color: #fbbf24;
+}
+
+.jsp-console-line--error {
+  color: #f87171;
+}
+
+.jsp-console-line--result {
+  color: #93c5fd;
+}
+
+.jsp-console-prefix {
+  opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+  .jsp-body {
+    grid-template-columns: 1fr;
+  }
+
+  .jsp-sidebar {
+    min-height: 200px;
+    max-height: 240px;
+  }
+
+  .jsp-workspace--split {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 220px;
+  }
+
+  .jsp-workspace--split .jsp-editor-pane {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 600px) {
+  .jsp-header-actions,
+  .jsp-toolbar {
+    width: 100%;
+  }
+
+  .jsp-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .jsp-status {
+    width: 100%;
+    margin-left: 0;
+  }
+}

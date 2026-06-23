@@ -1,0 +1,31 @@
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg-deep);
+}
+
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.35;
+}
+
+.bg-blob-1 {
+  width: 500px;
+  height: 500px;
+  top: -15%;
+  right: -10%;
+  background: #1a2540;
+}
+
+.bg-blob-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -10%;
+  left: -8%;
+  background: #251a30;
+}

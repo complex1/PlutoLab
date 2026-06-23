@@ -1,0 +1,116 @@
+.sci-calc {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.sci-display-wrap {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  text-align: right;
+  min-height: 80px;
+}
+
+.sci-expression {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  word-break: break-all;
+  min-height: 1.4em;
+}
+
+.sci-result {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-height: 1.4em;
+  letter-spacing: -0.02em;
+}
+
+.sci-result.error {
+  color: var(--accent-rose);
+}
+
+.sci-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sci-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+}
+
+.sci-row:first-child,
+.sci-row:nth-child(2),
+.sci-row:nth-child(3) {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.sci-btn {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.25rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.sci-btn:hover {
+  background: var(--bg-card-hover);
+}
+
+.sci-btn:active {
+  transform: scale(0.96);
+}
+
+.sci-btn--fn {
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  font-size: 0.8rem;
+}
+
+.sci-btn--sci {
+  color: var(--accent-violet);
+  font-size: 0.75rem;
+}
+
+.sci-btn--mode {
+  color: var(--accent-blue);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.sci-btn--op {
+  color: var(--accent-violet);
+  background: rgba(155, 143, 212, 0.1);
+  border-color: rgba(155, 143, 212, 0.15);
+}
+
+.sci-btn--eq {
+  color: #fff;
+  background: var(--accent-violet);
+  border-color: var(--accent-violet);
+  font-weight: 600;
+}
+
+.sci-btn--wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 400px) {
+  .sci-btn {
+    font-size: 0.75rem;
+    min-height: 2.5rem;
+    padding: 0.45rem 0.15rem;
+  }
+}

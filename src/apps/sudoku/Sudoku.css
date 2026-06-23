@@ -1,0 +1,122 @@
+.sudoku {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.sudoku-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.sudoku-timer {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.sudoku-win {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-green);
+}
+
+.sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1px;
+  width: 100%;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.sudoku-cell {
+  aspect-ratio: 1;
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 3.5vw, 1.15rem);
+  font-weight: 600;
+  background: var(--bg-card);
+  color: var(--accent-green);
+  border: none;
+  transition: background 0.15s;
+}
+
+.sudoku-cell:nth-child(3n):not(:nth-child(9n)) {
+  margin-right: 2px;
+}
+
+.sudoku-cell:nth-child(n + 19):nth-child(-n + 27),
+.sudoku-cell:nth-child(n + 46):nth-child(-n + 54) {
+  margin-bottom: 2px;
+}
+
+.sudoku-cell.fixed {
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  font-weight: 700;
+}
+
+.sudoku-cell.selected {
+  background: rgba(107, 184, 122, 0.15);
+}
+
+.sudoku-cell.related {
+  background: rgba(107, 184, 122, 0.06);
+}
+
+.sudoku-cell.wrong {
+  color: var(--accent-rose);
+}
+
+.sudoku-cell:hover:not(.fixed) {
+  background: var(--bg-card-hover);
+}
+
+.sudoku-numpad {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.sudoku-num {
+  padding: 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+}
+
+.sudoku-num:hover {
+  background: var(--bg-card-hover);
+}
+
+.sudoku-num.clear {
+  color: var(--accent-rose);
+}
+
+.sudoku-new {
+  padding: 0.55rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--accent-green);
+  border-radius: var(--radius-sm);
+  transition: filter 0.2s, transform 0.15s;
+}
+
+.sudoku-new:hover {
+  filter: brightness(1.06);
+}

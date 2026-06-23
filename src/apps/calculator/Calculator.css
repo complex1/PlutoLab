@@ -1,0 +1,109 @@
+.calculator {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.calculator-screen {
+  padding: 1.25rem 1.25rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+
+.calculator-history {
+  min-height: 1.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+  text-align: right;
+  color: var(--text-muted);
+}
+
+.calculator-display {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 10vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: right;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform-origin: right center;
+  letter-spacing: -0.02em;
+}
+
+.calculator-display.error {
+  color: var(--accent-rose);
+}
+
+.calculator-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.calc-key {
+  min-height: 3.25rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  transition:
+    transform 0.1s ease,
+    background 0.15s ease;
+}
+
+.calc-key:hover {
+  background: var(--bg-card-hover);
+}
+
+.calc-key:active {
+  transform: scale(0.96);
+}
+
+.calc-key-label {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.calc-key--wide {
+  grid-column: span 2;
+}
+
+.calc-key--fn {
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+}
+
+.calc-key--fn:hover {
+  color: var(--text-primary);
+}
+
+.calc-key--op {
+  color: var(--accent-blue);
+  background: rgba(107, 159, 255, 0.1);
+  border-color: rgba(107, 159, 255, 0.15);
+}
+
+.calc-key--op.calc-key--active {
+  background: rgba(107, 159, 255, 0.18);
+  border-color: rgba(107, 159, 255, 0.3);
+}
+
+.calc-key--eq {
+  color: #fff;
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
+.calc-key--eq:hover {
+  filter: brightness(1.06);
+}
+
+.calc-key--eq .calc-key-label {
+  font-weight: 600;
+}

@@ -1,0 +1,87 @@
+.ttt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.ttt-status {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.ttt-cell {
+  aspect-ratio: 1;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  transition: background 0.15s ease;
+}
+
+.ttt-cell:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+}
+
+.ttt-cell:disabled {
+  cursor: default;
+}
+
+.ttt-cell.mark-x {
+  color: var(--accent-blue);
+}
+
+.ttt-cell.mark-o {
+  color: var(--accent-rose);
+}
+
+.ttt-cell.winning {
+  background: rgba(224, 122, 138, 0.12);
+  border-color: rgba(224, 122, 138, 0.3);
+}
+
+.ttt-scores {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.score-x {
+  color: var(--accent-blue);
+}
+.score-o {
+  color: var(--accent-rose);
+}
+
+.ttt-reset {
+  padding: 0.55rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--accent-rose);
+  border-radius: var(--radius-sm);
+  transition: filter 0.2s, transform 0.15s;
+}
+
+.ttt-reset:hover {
+  filter: brightness(1.06);
+}
+
+.ttt-reset:active {
+  transform: scale(0.98);
+}

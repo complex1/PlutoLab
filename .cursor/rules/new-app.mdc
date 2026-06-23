@@ -1,0 +1,36 @@
+---
+description: How to add a new app, tool, or game to Pluto Labs
+globs: src/apps/**/*,src/registry/**/*
+alwaysApply: false
+---
+
+# Pluto Labs — New App Rule
+
+**Read `AGENTS.md` in the repo root before implementing.**
+
+## Quick checklist
+
+1. Create `src/apps/<kebab-name>/` with default-export component + colocated CSS
+2. Extract pure logic to `*Logic.ts` when state is non-trivial
+3. Register lazy import + `AppEntry` in `src/registry/apps.ts` only — never edit `App.tsx`
+4. No custom header/back button — `AppShell` handles chrome
+5. Use CSS variables from `src/index.css` (dark flat theme, no neon)
+6. Game entrance animations: run on load/new-game key only, not every move
+7. Canvas games: `useRef` game state + `requestAnimationFrame`, not per-frame `setState`
+8. Run `npm run build` and fix TypeScript errors
+
+## Registry entry shape
+
+```typescript
+{
+  id: "my-app",
+  title: "My App",
+  description: "Short catalog description.",
+  category: "tool", // tool | game | experiment
+  route: "/apps/my-app",
+  accent: "cyan",   // cyan | magenta | purple | green
+  icon: "◆",
+  tags: ["utility"],
+  component: MyApp,
+}
+```

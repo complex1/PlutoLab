@@ -1,0 +1,80 @@
+.flappy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.flappy-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.flappy-settings-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: color 0.15s, background 0.15s;
+}
+
+.flappy-settings-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+}
+
+.flappy-canvas {
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.flappy-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  padding: 1.25rem 1.5rem;
+  background: rgba(15, 15, 15, 0.85);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  min-width: 180px;
+}
+
+.flappy-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.flappy-score {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.flappy-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.flappy-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
