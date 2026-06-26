@@ -32,6 +32,8 @@ const JsPlayground = lazy(() => import("@/apps/js-playground/JsPlayground"));
 const JsonLab = lazy(() => import("@/apps/json-lab/JsonLab"));
 const RegexTool = lazy(() => import("@/apps/regex/Regex"));
 const Storyboard = lazy(() => import("@/apps/storyboard/Storyboard"));
+const ColorPalette = lazy(() => import("@/apps/color-palette/ColorPalette"));
+const FrameAnimator = lazy(() => import("@/apps/frame-animator/FrameAnimator"));
 
 export const apps: AppEntry[] = [
   {
@@ -198,6 +200,28 @@ export const apps: AppEntry[] = [
     icon: "◇",
     tags: ["creative", "svg", "design"],
     component: VectorDraw,
+  },
+  {
+    id: "color-palette",
+    title: "Color Palette",
+    description: "Pick colors from images, generate harmonies, and export CSS variables.",
+    category: "tool",
+    route: "/apps/color-palette",
+    accent: "magenta",
+    icon: "◉",
+    tags: ["design", "color", "css"],
+    component: ColorPalette,
+  },
+  {
+    id: "frame-animator",
+    title: "Frame Animator",
+    description: "Draw frame-by-frame animations with onion skin, timeline, and GIF export.",
+    category: "tool",
+    route: "/apps/frame-animator",
+    accent: "purple",
+    icon: "▶",
+    tags: ["creative", "animation", "drawing"],
+    component: FrameAnimator,
   },
 ];
 
